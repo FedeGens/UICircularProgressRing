@@ -835,7 +835,7 @@ fileprivate extension CALayer {
      ## Author
      Luis Padron
      */
-    @objc open var animationTimingFunction: CAMediaTimingFunctionName = .easeInEaseOut {
+    @objc open var animationTimingFunction: CAMediaTimingFunctionName = kCAMediaTimingFunctionEaseOut as CAMediaTimingFunctionName {
         didSet {
             ringLayer.animationTimingFunction = animationTimingFunction
         }
@@ -1005,12 +1005,12 @@ fileprivate extension CALayer {
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(restoreProgress),
-                                               name: UIApplication.willEnterForegroundNotification,
+                                               name: NSNotification.Name.UIApplicationWillEnterForeground,
                                                object: nil)
 
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(snapshotProgress),
-                                               name: UIApplication.willResignActiveNotification,
+                                               name: NSNotification.Name.UIApplicationWillResignActive,
                                                object: nil)
     }
 
